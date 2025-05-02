@@ -33,7 +33,6 @@ Model Design:
 - Both tasks share a transformer backbone (distilbert-base-uncased).
 - Task A uses an MLP head with ReLU and Dropout to capture more classes. 
 - Task B uses a simple linear head for binary classification.
-- Includes a freeze_backbone() method to freeze transformer weights for head-only training.
 
 ---
 
