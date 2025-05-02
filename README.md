@@ -37,10 +37,9 @@ Model Design:
 ---
 
 ## Task 3: Training Considerations
-
 Discuss the implications and advantages of each scenario and explain your rationale as to how the model should be trained given the following:
 
-1. If the entire network should be frozen: This is helpful if the model is already trained and you need to use the model to extract features from text. You are unable to train the model as it won't update any parameters. This is advantageous for quick use of the model without using resources on training. The disadvantages is that you are fully reliant on how the model is trained, especially if you are using a pretrained model. However good the model is currently is however good the outputs will be. 
+1. If the entire network should be frozen: This is helpful if the model is already trained and you need to use the model to extract features from text. You are unable to train the model as it won't update any parameters. Another approach when the entire network is frozen is parameter efficient fine-tuning. This is a process where the existing parameters are frozen and the model is augmented with additional, trainable parameters. This can be done via LoRA to fine tune the model for more specific purposes. 
 
 2. If only the transformer backbone should be frozen: This is used when you have a trained backbone that generalizes well. By freezing it you can train task-specific heads without training the backbone to the level of overfitting. This also allows for faster training as you don't need to update the entire backbone. Some disadvantages is that each task-specific head is heavily reliant on how the backbone is trained, and if the backbone is not producing enough information or the information is to generalized, it may cap the learning of the task-specific heads. When training, only pass the heads into the optimizer. 
 
